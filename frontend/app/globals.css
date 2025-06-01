@@ -1,21 +1,111 @@
+/* app/globals.css */
+
+/* IMPORTANTE: Los @import SIEMPRE deben ir al inicio del archivo */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Variables CSS personalizadas */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --variable-collection-desktop: 128px;
+  --variable-collection-mobile: 30px;
+  --variable-collection-tablet: 80px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Estilos personalizados de Anima */
+@layer utilities {
+  .all-unset {
+    all: unset;
+  }
+  
+  /* Text stroke utilities */
+  .text-stroke-border {
+    -webkit-text-stroke: 1px #202648;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Componente de cristal/glass effect */
+  .glass-card {
+    @apply bg-glass-bg rounded-[32px] border border-glass-border shadow-glass backdrop-blur-glass;
+    backdrop-filter: blur(32px) brightness(100%);
+    -webkit-backdrop-filter: blur(32px) brightness(100%);
+  }
+  
+  /* Gradientes personalizados */
+  .radial-gradient-white {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  }
+  
+  /* Estilos para el hero section */
+  .hero-section {
+    @apply bg-teal-custom rounded-[198px_0px_323px_0px] border border-border-custom;
+  }
+  
+  /* Container responsive */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12;
+  }
+
+  /* === NUEVOS COMPONENTES DEL FOOTER === */
+  
+  /* Icono de red social reutilizable */
+  .footer-social-icon {
+    @apply w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-white hover:bg-gray-50 transition-all duration-300 flex items-center justify-center group hover:scale-105;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .footer-social-icon:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Imagen dentro del icono social */
+  .footer-social-image {
+    @apply w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 transition-transform duration-300;
+  }
+  
+  /* Logo del footer responsive */
+  .footer-logo {
+    @apply w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] xl:w-[340px] h-auto object-contain hover:scale-105 transition-transform duration-300 cursor-pointer;
+  }
+  
+  /* Enlaces del footer */
+  .footer-link {
+    @apply text-white hover:text-footer-link transition-colors duration-300 hover:underline;
+  }
+  
+  /* Texto del copyright */
+  .footer-copyright {
+    @apply text-white/80 text-sm sm:text-base lg:text-lg leading-relaxed;
+  }
+  
+  /* Sombra de fondo del footer */
+  .footer-background-shadow {
+    @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[700px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[400px] object-contain opacity-20;
+  }
+}
+
+/* Responsive breakpoints personalizados */
+@media (max-width: 768px) {
+  :root {
+    --spacing-mobile: var(--variable-collection-mobile);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --spacing-tablet: var(--variable-collection-tablet);
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --spacing-desktop: var(--variable-collection-desktop);
+  }
 }

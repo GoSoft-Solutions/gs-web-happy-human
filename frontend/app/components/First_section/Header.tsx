@@ -1,0 +1,149 @@
+'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleCtaClick = () => {
+    console.log('🔥 Navegando a /start');
+    
+    // Cerrar menú móvil si está abierto
+    closeMenu();
+    
+    // Navegar a la nueva página
+    router.push('/start');
+  };
+
+  return (
+    <header className="w-full px-4 sm:px-6 lg:px-10 py-3 sm:py-4 bg-[#2f3362] relative z-50">
+      <div className="flex items-center justify-between w-full max-w-none mx-auto">
+        {/* Logo */}
+        <div className="flex-1 lg:flex-none flex justify-center lg:justify-start">
+          <h1 className="text-[#c4a64b] font-bold tracking-widest text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-serif whitespace-nowrap transition-all duration-300 hover:text-[#d4b65b] cursor-pointer">
+            HAPPY HUMAN
+          </h1>
+        </div>
+
+        {/* Menú Desktop - Escalado fluido */}
+        <nav className="hidden lg:flex gap-3 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-source-sans font-medium">
+          <a 
+            href="#" 
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+          >
+            HOME
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a 
+            href="#" 
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+          >
+            ACERCA DE
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a 
+            href="#" 
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+          >
+            DANIEL CORRAL
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a 
+            href="#" 
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+          >
+            TRABAJO
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+
+        {/* CTA Desktop - Escalado fluido */}
+        <button 
+          onClick={handleCtaClick}
+          className="hidden lg:block bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-2 sm:px-3 md:px-4 lg:px-4 xl:px-6 py-1.5 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
+        >
+          CAMBIA TU VIDA
+        </button>
+
+        {/* Botón Hamburguesa - Solo visible en móvil */}
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none group"
+          aria-label="Toggle menu"
+        >
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
+      </div>
+
+      {/* Menú Móvil - Slide down */}
+      <div className={`lg:hidden absolute top-full left-0 w-full bg-[#2f3362] border-t border-white/10 transition-all duration-300 ease-in-out ${
+        isMenuOpen 
+          ? 'opacity-100 translate-y-0 visible' 
+          : 'opacity-0 -translate-y-4 invisible'
+      }`}>
+        <div className="px-4 py-6 space-y-4">
+          {/* Enlaces del menú móvil - Escalado fluido */}
+          <nav className="space-y-2 sm:space-y-4">
+            <a 
+              href="#" 
+              onClick={closeMenu}
+              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+            >
+              HOME
+            </a>
+            <a 
+              href="#" 
+              onClick={closeMenu}
+              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+            >
+              ACERCA DE
+            </a>
+            <a 
+              href="#" 
+              onClick={closeMenu}
+              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+            >
+              DANIEL CORRAL
+            </a>
+            <a 
+              href="#" 
+              onClick={closeMenu}
+              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+            >
+              TRABAJO
+            </a>
+          </nav>
+
+          {/* CTA en menú móvil - Escalado fluido */}
+          <div className="pt-3 sm:pt-4 border-t border-white/10">
+            <button 
+              onClick={handleCtaClick}
+              className="w-full bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg md:text-xl rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+            >
+              CAMBIA TU VIDA
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay para cerrar menú */}
+      {isMenuOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-black/20 z-40"
+          onClick={closeMenu}
+        ></div>
+      )}
+    </header>
+  );
+}
