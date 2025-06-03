@@ -32,13 +32,13 @@ const DanielCorral: React.FC = () => {
               <span className="text-[#d54c4a] text-3xl font-bold">Mentalidad</span>
             </div>
             
-            {/* Imagen */}
-            <div className="absolute bottom-0 left-0 w-full h-1/2">
+            {/* Imagen - ARREGLADO: Contenedor con relative explícito */}
+            <div className="relative w-full h-1/2 mt-auto">
               <Image
-                src= "/main_section/HAPP005.png"
-                alt= "pensando"
+                src="/main_section/HAPP005.png"
+                alt="pensando"
                 fill
-                className= "object-cover object-top"
+                className="object-cover object-top"
               />
             </div>
           </div>
@@ -58,11 +58,11 @@ const DanielCorral: React.FC = () => {
               </p>
             </div>
             
-            {/* Imagen circular en el centro */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-48 rounded-full overflow-hidden">
+            {/* Imagen circular en el centro - ARREGLADO */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-48 rounded-full overflow-hidden relative">
               <Image
-                src= "/main_section/HAPP006.jpg"
-                alt= "ejercitándose"
+                src="/main_section/HAPP006.jpg"
+                alt="ejercitándose"
                 fill
                 className="object-cover"
               />
@@ -84,10 +84,10 @@ const DanielCorral: React.FC = () => {
               </p>
             </div>
             
-            {/* Imagen */}
-            <div className="absolute bottom-0 right-0 w-full h-1/2">
+            {/* Imagen - ARREGLADO */}
+            <div className="relative w-full h-1/2 mt-auto">
               <Image
-                src= "/main_section/HAPP007.png"
+                src="/main_section/HAPP007.png"
                 alt="Persona reflexionando"
                 fill
                 className="object-cover object-top"
@@ -119,10 +119,10 @@ const DanielCorral: React.FC = () => {
               </p>
             </div>
             
-            {/* Imagen */}
-            <div className="absolute bottom-0 left-0 w-full h-1/2">
+            {/* Imagen - ARREGLADO */}
+            <div className="relative w-full h-1/2 mt-auto">
               <Image
-                src= "/main_section/HAPP008.png"
+                src="/main_section/HAPP008.png"
                 alt="Pareja"
                 fill
                 className="object-cover object-center"
@@ -146,10 +146,10 @@ const DanielCorral: React.FC = () => {
               </p>
             </div>
             
-            {/* Imagen */}
-            <div className="absolute bottom-0 w-full h-1/2">
+            {/* Imagen - ARREGLADO */}
+            <div className="relative w-full h-1/2">
               <Image
-                src= "/main_section/HAPP009.png"
+                src="/main_section/HAPP009.png"
                 alt="Persona exitosa"
                 fill
                 className="object-cover object-top"
@@ -176,10 +176,10 @@ const DanielCorral: React.FC = () => {
               </p>
             </div>
             
-            {/* Imagen */}
-            <div className="absolute bottom-0 right-0 w-full h-1/2">
+            {/* Imagen - ARREGLADO */}
+            <div className="relative w-full h-1/2 mt-auto">
               <Image
-                src= "/main_section/HAPP010.png"
+                src="/main_section/HAPP010.png"
                 alt="Persona exitosa"
                 fill
                 className="object-cover object-center"
