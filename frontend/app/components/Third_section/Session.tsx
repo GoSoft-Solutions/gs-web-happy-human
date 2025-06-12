@@ -47,17 +47,17 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
   return (
     <>
       {/* Sección Hero con mensaje de bienvenida */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Columna izquierda - Texto de bienvenida */}
           <div className="text-white space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               ¡Felicidades por llegar hasta aquí!
             </h1>
             
-            <div className="space-y-4 text-lg">
+            <div className="space-y-6 text-lg">
               {/* Saludo personalizado */}
-              <p className="font-semibold">
+              <p className="font-semibold mt-14">
                 Hola {userName || '[Cargando...]'}
               </p>
               
@@ -74,7 +74,7 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
           
           {/* Columna derecha - Imagen del coach */}
           <div className="flex justify-center items-start">
-            <div className="w-100 h-95 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="w-[450px] h-[550px] bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl overflow-hidden shadow-2xl">
               {coachInfo.avatar ? (
                 <img 
                   src={coachInfo.avatar} 
