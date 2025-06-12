@@ -147,6 +147,7 @@ export const StartPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✨ FUNCIÓN ACTUALIZADA - Conecta con Google Sheets
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -167,8 +168,9 @@ export const StartPage: React.FC = () => {
         celular: fullPhoneNumber // Enviar el teléfono completo
       };
 
-      // Aquí puedes descomentar cuando tengas tu API lista
-      /*
+      console.log('Enviando formulario:', dataToSend);
+
+      // Enviar a tu API de Next.js que luego conecta con Google Sheets
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
@@ -182,11 +184,8 @@ export const StartPage: React.FC = () => {
       if (!response.ok) {
         throw new Error(result.error || 'Error al enviar el formulario');
       }
-      */
 
-      // Por ahora solo simular envío
-      console.log('Datos del formulario:', dataToSend);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log('Formulario enviado exitosamente:', result);
       
       // Mostrar la sección de confirmación
       setShowConfirmation(true);
@@ -201,7 +200,7 @@ export const StartPage: React.FC = () => {
 
     } catch (error) {
       console.error('Error al enviar formulario:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Error al enviar el formulario');
+      setSubmitError(error instanceof Error ? error.message : 'Error al enviar el formulario. Por favor intenta nuevamente.');
     } finally {
       setIsSubmitting(false);
     }
