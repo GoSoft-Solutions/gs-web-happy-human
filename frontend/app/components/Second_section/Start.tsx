@@ -505,11 +505,11 @@ export const StartPage: React.FC = () => {
 
             {/* Imagen del formulario */}
             <div className="order-1 lg:order-2 flex justify-center">
-              <div className="w-[280px] sm:w-[320px] md:w-[380px] h-[350px] sm:h-[400px] md:h-[480px] rounded-2xl overflow-hidden">
+              <div className="w-[280px] sm:w-[320px] md:w-[550px] h-[350px] sm:h-[400px] md:h-[730px] rounded-2xl overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   alt="Persona trabajando"
-                  src="/Registration_section/HAPP013.jpg"
+                  src="/Registration_section/HAPP013.png"
                 />
               </div>
             </div>
