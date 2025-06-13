@@ -1,10 +1,21 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,17 +26,17 @@ export default function Header() {
   };
 
   const handleCtaClick = () => {
-    console.log('🔥 Navegando a /start');
-    
-    // Cerrar menú móvil si está abierto
+    console.log('Navegando a /start');
     closeMenu();
-    
-    // Navegar a la nueva página
     router.push('/start');
   };
 
   return (
-    <header className="w-full px-4 sm:px-6 lg:px-10 py-3 sm:py-4 bg-[#2f3362] relative z-50">
+    <header className={`${isScrolled ? 'fixed' : 'sticky'} top-0 left-0 w-full px-4 sm:px-6 lg:px-10 py-3 sm:py-4 z-50 transition-all duration-500 ease-in-out ${
+      isScrolled 
+        ? 'bg-[#2f3362]/90 backdrop-blur-md border-b border-white/10 shadow-lg' 
+        : 'bg-[#2f3362] border-b border-transparent'
+    }`}>
       <div className="flex items-center justify-between w-full max-w-none mx-auto">
         {/* Logo */}
         <div className="flex-1 lg:flex-none flex justify-center lg:justify-start">
@@ -34,31 +45,31 @@ export default function Header() {
           </h1>
         </div>
 
-        {/* Menú Desktop - Escalado fluido */}
+        {/* Menú Desktop */}
         <nav className="hidden lg:flex gap-3 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-source-sans font-medium">
           <a 
-            href="#" 
+            href="#Inicio" 
             className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
           >
             HOME
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#" 
+            href="#AcercaDe" 
             className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
           >
             ACERCA DE
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#" 
+            href="#DanielCorral" 
             className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
           >
             DANIEL CORRAL
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
-            href="#" 
+            href="#Trabajo" 
             className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
           >
             TRABAJO
@@ -66,7 +77,7 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* CTA Desktop - Escalado fluido */}
+        {/* CTA Desktop */}
         <button 
           onClick={handleCtaClick}
           className="hidden lg:block bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-2 sm:px-3 md:px-4 lg:px-4 xl:px-6 py-1.5 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
@@ -74,7 +85,7 @@ export default function Header() {
           CAMBIA TU VIDA
         </button>
 
-        {/* Botón Hamburguesa - Solo visible en móvil */}
+        {/* Botón Hamburguesa */}
         <button
           onClick={toggleMenu}
           className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none group"
@@ -86,38 +97,37 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menú Móvil - Slide down */}
+      {/* Menú Móvil */}
       <div className={`lg:hidden absolute top-full left-0 w-full bg-[#2f3362] border-t border-white/10 transition-all duration-300 ease-in-out ${
         isMenuOpen 
           ? 'opacity-100 translate-y-0 visible' 
           : 'opacity-0 -translate-y-4 invisible'
       }`}>
         <div className="px-4 py-6 space-y-4">
-          {/* Enlaces del menú móvil - Escalado fluido */}
           <nav className="space-y-2 sm:space-y-4">
             <a 
-              href="#" 
+              href="#Inicio" 
               onClick={closeMenu}
               className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               HOME
             </a>
             <a 
-              href="#" 
+              href="#AcercaDe" 
               onClick={closeMenu}
               className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               ACERCA DE
             </a>
             <a 
-              href="#" 
+              href="#DanielCorral" 
               onClick={closeMenu}
               className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               DANIEL CORRAL
             </a>
             <a 
-              href="#" 
+              href="#Trabajo" 
               onClick={closeMenu}
               className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
@@ -125,7 +135,7 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* CTA en menú móvil - Escalado fluido */}
+          {/* CTA en menú móvil */}
           <div className="pt-3 sm:pt-4 border-t border-white/10">
             <button 
               onClick={handleCtaClick}

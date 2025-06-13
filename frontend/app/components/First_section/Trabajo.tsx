@@ -7,43 +7,46 @@ import React from "react";
 
 export const Endsection: React.FC = () => {
   return (
-    <div className="flex flex-col w-full mx-auto items-center relative bg-[#272F54] min-h-screen">
+    <div id="Trabajo" className="flex flex-col w-full mx-auto items-center relative bg-[#272F54] min-h-screen">
       {/* Hero Section */}
-      <section className="flex flex-col h-auto items-start gap-2.5 px-4 sm:px-6 md:px-12 lg:px-[120px] xl:px-[180px] py-8 sm:py-12 md:py-16 relative w-full max-w-[1983px] mx-auto bg-teal-700 rounded-[100px_0px_150px_0px] sm:rounded-[150px_0px_200px_0px] lg:rounded-[198px_0px_323px_0px] border border-solid border-[#202648] mt-8 sm:mt-12 lg:mt-16">
-        <div className="flex flex-col w-full max-w-[1602px] mx-auto items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 relative">
-          {/* Main Heading */}
-          <div className="relative w-full">
-            <div className="relative w-full max-w-[1241px] mx-auto px-4">
-              <h1 className="relative w-full text-stroke-border font-dm-serif font-normal text-text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl-custom text-center tracking-[-0.5px] sm:tracking-[-1px] lg:tracking-[-1.80px] leading-tight sm:leading-normal z-20 mb-2">
-                Empieza a Transformar tu vida con tres pasos:
-              </h1>
-              <img
-                className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1230px] h-1 sm:h-1.5 lg:h-2 mx-auto block z-10"
-                alt="Decorative element"
-                src="/Underlined2.png"
-              />
-            </div>
-          </div>
+      <section className="flex flex-col h-auto items-start gap-2.5 px-3 sm:px-6 md:px-12 lg:px-[120px] xl:px-[180px] py-6 sm:py-8 md:py-12 lg:py-16 relative w-full max-w-[1983px] mx-auto bg-teal-700 rounded-[40px_0px_60px_0px] sm:rounded-[80px_0px_120px_0px] md:rounded-[120px_0px_180px_0px] lg:rounded-[198px_0px_323px_0px] border border-solid border-[#202648] mt-4 sm:mt-8 lg:mt-16">
+              <div className="flex flex-col w-full max-w-[1602px] mx-auto items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 relative">
+                {/* Main Heading */}
+                <div className="relative w-full">
+                  <div className="relative w-full max-w-[1241px] mx-auto px-2 sm:px-4">
+                    <h1 className="relative w-full font-['DM_Serif_Display'] font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-center tracking-[0.5px] sm:tracking-[0.3px] md:tracking-[0px] lg:tracking-[-0.5px] leading-relaxed sm:leading-normal drop-shadow-2xl z-20 mb-3 sm:mb-4">
+                      Empieza a Transformar tu vida con tres pasos:
+                    </h1>
+                    <img
+                      className="w-full max-w-[280px] sm:max-w-[400px] md:max-w-[600px] lg:max-w-[800px] xl:max-w-[1230px] h-0.5 sm:h-1 lg:h-1.5 xl:h-2 mx-auto block z-10"
+                      alt="Decorative element"
+                      src="/Underlined2.png"
+                    />
+                  </div>
+                </div>
 
-          {/* Three Steps - Responsive Layout */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-18 relative w-full px-2">
-            <div className="flex-1 text-stroke-border font-merienda font-normal text-text-dark text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl-custom text-center tracking-[-0.5px] sm:tracking-[-0.8px] lg:tracking-[-1.20px] leading-normal min-w-0">
-              📆 Reserva
-            </div>
-            <div className="flex-1 text-stroke-border font-merienda font-normal text-text-dark text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl-custom text-center tracking-[-0.5px] sm:tracking-[-0.8px] lg:tracking-[-1.20px] leading-normal min-w-0">
-              📞 Videollamada
-            </div>
-            <div className="flex-1 text-stroke-border font-merienda font-normal text-text-dark text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl-custom text-center tracking-[-0.5px] sm:tracking-[-0.8px] lg:tracking-[-1.20px] leading-normal min-w-0">
-              🚀 Crecimiento
-            </div>
-          </div>
+                {/* Three Steps - Layout responsivo mejorado */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 relative w-full px-2 sm:px-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-white font-['Merienda_One'] font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center tracking-[-0.3px] sm:tracking-[-0.5px] lg:tracking-[-0.8px] leading-normal whitespace-nowrap">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl">📆</span>
+                    <span>Reserva</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-white font-['Merienda_One'] font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center tracking-[-0.3px] sm:tracking-[-0.5px] lg:tracking-[-0.8px] leading-normal whitespace-nowrap">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl">📞</span>
+                    <span>Videollamada</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-white font-['Merienda_One'] font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center tracking-[-0.3px] sm:tracking-[-0.5px] lg:tracking-[-0.8px] leading-normal whitespace-nowrap">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl">🚀</span>
+                    <span>Crecimiento</span>
+                  </div>
+                </div>
 
-          {/* Botón responsive */}
-          <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors duration-300 min-w-[200px] sm:min-w-[240px] w-full max-w-[300px] sm:max-w-none sm:w-auto">
-            Reserva tu sesión
-          </button>
-        </div>
-      </section>
+                {/* Botón responsive mejorado */}
+                <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full transition-colors duration-300 w-full max-w-[280px] sm:max-w-[320px] md:max-w-none md:w-auto shadow-lg">
+                  Reserva tu sesión
+                </button>
+              </div>
+            </section>
 
       {/* Main Content Section */}
       <section className="relative w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-32">
@@ -64,7 +67,7 @@ export const Endsection: React.FC = () => {
           </div>
         </div>
 
-        {/* Cards Container - Completamente responsivo */}
+        {/* Cards Container*/}
         <div className="relative w-full max-w-[1560px] mx-auto">
           {/* Layout responsivo para tarjetas e imagen */}
           <div className="flex flex-col lg:flex-row items-end gap-4 sm:gap-6 lg:gap-0 relative">

@@ -18,6 +18,23 @@
   --variable-collection-tablet: 80px;
 }
 
+/* === CONFIGURACIÓN DE SCROLL SUAVE === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Configuración adicional para mejor experiencia de scroll */
+* {
+  scroll-margin-top: 80px; /* Ajusta según la altura de tu header fijo */
+}
+
+/* Para dispositivos móviles, ajustar el offset del scroll */
+@media (max-width: 768px) {
+  * {
+    scroll-margin-top: 70px; /* Altura del header en móvil */
+  }
+}
+
 /* Estilos personalizados de Anima */
 @layer utilities {
   .all-unset {
@@ -27,6 +44,19 @@
   /* Text stroke utilities */
   .text-stroke-border {
     -webkit-text-stroke: 1px #202648;
+  }
+  
+  /* === UTILIDADES PARA SCROLL === */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  .scroll-offset-header {
+    scroll-margin-top: 80px;
+  }
+  
+  .scroll-offset-header-mobile {
+    scroll-margin-top: 70px;
   }
 }
 
@@ -89,6 +119,27 @@
   .footer-background-shadow {
     @apply w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[700px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[400px] object-contain opacity-20;
   }
+
+  /* === COMPONENTES PARA SECCIONES CON SCROLL === */
+  
+  /* Clase base para secciones principales */
+  .main-section {
+    @apply scroll-offset-header;
+  }
+  
+  /* Sección con padding superior para compensar header fijo */
+  .section-with-header-offset {
+    @apply pt-20 md:pt-24 lg:pt-28;
+  }
+  
+  /* Animación suave para elementos que aparecen al hacer scroll */
+  .fade-in-on-scroll {
+    @apply opacity-0 transform translate-y-4 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-on-scroll.visible {
+    @apply opacity-100 translate-y-0;
+  }
 }
 
 /* Responsive breakpoints personalizados */
@@ -107,5 +158,51 @@
 @media (min-width: 1025px) {
   :root {
     --spacing-desktop: var(--variable-collection-desktop);
+  }
+}
+
+/* === MEJORAS ADICIONALES PARA SCROLL === */
+
+/* Personalización de la scrollbar para navegadores webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4a64b;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4b65b;
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c4a64b #f1f1f1;
+}
+
+/* Asegurar que las transiciones de scroll funcionen en todos los navegadores */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Para usuarios que prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .fade-in-on-scroll {
+    @apply opacity-100 transform-none;
   }
 }

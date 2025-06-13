@@ -1,8 +1,9 @@
+'use client'
 import React from "react";
 
 export const Home = () => {
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen w-full">
+    <div id="Inicio" className="flex flex-col lg:flex-row min-h-screen w-full">
       
       {/* Sección izquierda - Contenido de texto */}
       <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1">
