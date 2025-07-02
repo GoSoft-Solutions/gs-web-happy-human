@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle } from 'lucide-react';
 
@@ -8,7 +8,7 @@ import SessionComponent from '../components/Third_section/Session';
 import DateComponent from '../components/Third_section/Date';
 import PayComponent from '../components/Third_section/Pay';
 
-// INTERFACES COMPARTIDAS
+// INTERFACES COMPARTIDAS (mantener todas las interfaces como estaban)
 interface SessionOption {
   id: string;
   title: string;
@@ -38,7 +38,7 @@ interface BookingData {
   };
 }
 
-// HOOKS PERSONALIZADOS
+// HOOKS PERSONALIZADOS (mantener todos como estaban)
 const useCalendarAvailability = () => {
   const [availableDates, setAvailableDates] = useState<string[]>([]);
   const [timeSlots, setTimeSlots] = useState<Record<string, string[]>>({});
@@ -177,8 +177,8 @@ const useCoachInfo = () => {
   return { coachInfo, loading };
 };
 
-// COMPONENTE PRINCIPAL
-export default function SuscriptionPage() {
+// ✅ NUEVO COMPONENTE SEPARADO QUE USA useSearchParams
+function SuscriptionContent() {
   const searchParams = useSearchParams();
   
   // Estados principales
@@ -188,7 +188,7 @@ export default function SuscriptionPage() {
   const [isVerifiedUser, setIsVerifiedUser] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
-  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(false); // ✅ NUEVO: Estado para controlar el mensaje
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(false);
   
   // Estados de selección
   const [selectedSession, setSelectedSession] = useState<string>('');
@@ -260,7 +260,7 @@ export default function SuscriptionPage() {
     }
   ];
 
-  // ✅ FIX: Efecto para capturar datos SOLO del usuario verificado
+  // ✅ Efecto para capturar datos del usuario verificado
   useEffect(() => {
     const nombre = searchParams.get('nombre');
     
@@ -274,7 +274,7 @@ export default function SuscriptionPage() {
         
         setUserName(nombreDecodificado);
         setIsVerifiedUser(true);
-        setShowWelcomeMessage(true); // ✅ NUEVO: Mostrar mensaje de bienvenida
+        setShowWelcomeMessage(true);
         
         const nombrePartes = nombreDecodificado.trim().split(' ');
         const primerNombre = nombrePartes[0] || '';
@@ -296,7 +296,6 @@ export default function SuscriptionPage() {
           isVerified: true 
         });
         
-        // ✅ NUEVO: Ocultar mensaje después de 5 segundos
         setTimeout(() => {
           setShowWelcomeMessage(false);
         }, 5000);
@@ -678,5 +677,21 @@ export default function SuscriptionPage() {
         />
       )}
     </div>
+  );
+}
+
+// ✅ COMPONENTE PRINCIPAL CON SUSPENSE
+export default function SuscriptionPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Cargando...</p>
+        </div>
+      </div>
+    }>
+      <SuscriptionContent />
+    </Suspense>
   );
 }
