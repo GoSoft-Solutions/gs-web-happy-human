@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { CheckCircle } from 'lucide-react';
 
 // Importar componentes de Third_section
@@ -7,9 +8,7 @@ import SessionComponent from '../components/Third_section/Session';
 import DateComponent from '../components/Third_section/Date';
 import PayComponent from '../components/Third_section/Pay';
 
-
 // INTERFACES COMPARTIDAS
-
 interface SessionOption {
   id: string;
   title: string;
@@ -40,7 +39,6 @@ interface BookingData {
 }
 
 // HOOKS PERSONALIZADOS
-
 const useCalendarAvailability = () => {
   const [availableDates, setAvailableDates] = useState<string[]>([]);
   const [timeSlots, setTimeSlots] = useState<Record<string, string[]>>({});
@@ -180,11 +178,17 @@ const useCoachInfo = () => {
 };
 
 // COMPONENTE PRINCIPAL
-
-export default function SubscriptionPage() {
-  // Estados del flujo principal
+export default function SuscriptionPage() {
+  const searchParams = useSearchParams();
+  
+  // Estados principales
   const [currentStep, setCurrentStep] = useState<'selection' | 'booking' | 'payment' | 'confirmation'>('selection');
   const [userName, setUserName] = useState<string>('');
+  const [userEmail, setUserEmail] = useState<string>('');
+  const [isVerifiedUser, setIsVerifiedUser] = useState<boolean>(false);
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(false); // ✅ NUEVO: Estado para controlar el mensaje
   
   // Estados de selección
   const [selectedSession, setSelectedSession] = useState<string>('');
@@ -256,31 +260,58 @@ export default function SubscriptionPage() {
     }
   ];
 
-  // Efectos
+  // ✅ FIX: Efecto para capturar datos SOLO del usuario verificado
   useEffect(() => {
-    const fetchUserName = async () => {
+    const nombre = searchParams.get('nombre');
+    
+    console.log('🔍 Verificando datos de URL...');
+    console.log('Parámetro nombre:', nombre);
+    
+    if (nombre) {
       try {
-        const response = await fetch('/api/user/profile');
-        if (response.ok) {
-          const userData = await response.json();
-          setUserName(userData.name);
-          setPaymentFormData(prev => ({
-            ...prev,
-            firstName: userData.firstName || '',
-            lastName: userData.lastName || '',
-            email: userData.email || '',
-            phone: userData.phone || ''
-          }));
-        } else {
-          throw new Error('Failed to fetch user data');
-        }
+        const nombreDecodificado = decodeURIComponent(nombre);
+        console.log('✅ Usuario verificado recibido:', nombreDecodificado);
+        
+        setUserName(nombreDecodificado);
+        setIsVerifiedUser(true);
+        setShowWelcomeMessage(true); // ✅ NUEVO: Mostrar mensaje de bienvenida
+        
+        const nombrePartes = nombreDecodificado.trim().split(' ');
+        const primerNombre = nombrePartes[0] || '';
+        const apellidos = nombrePartes.slice(1).join(' ') || '';
+        
+        setFirstName(primerNombre);
+        setLastName(apellidos);
+        
+        setPaymentFormData(prev => ({
+          ...prev,
+          firstName: primerNombre,
+          lastName: apellidos,
+          cardholderName: nombreDecodificado
+        }));
+        
+        console.log('✅ Estados actualizados:', { 
+          userName: nombreDecodificado,
+          firstName: primerNombre, 
+          isVerified: true 
+        });
+        
+        // ✅ NUEVO: Ocultar mensaje después de 5 segundos
+        setTimeout(() => {
+          setShowWelcomeMessage(false);
+        }, 5000);
+        
       } catch (error) {
-        console.error('Error loading user data:', error);
-        setUserName('Daniel Corral');
+        console.error('❌ Error decodificando nombre:', error);
+        setUserName('');
+        setIsVerifiedUser(false);
       }
-    };
-    fetchUserName();
-  }, []);
+    } else {
+      console.log('ℹ️ No se recibió nombre en la URL');
+      setUserName('');
+      setIsVerifiedUser(false);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     fetchAvailability();
@@ -464,6 +495,16 @@ export default function SubscriptionPage() {
     return date.toLocaleDateString('es-ES', options);
   };
 
+  const getFirstName = () => {
+    if (firstName) {
+      return firstName;
+    }
+    if (userName && userName.trim() !== '') {
+      return userName.split(' ')[0];
+    }
+    return '';
+  };
+
   // Renderizado condicional - Confirmación
   if (currentStep === 'confirmation') {
     return (
@@ -471,7 +512,12 @@ export default function SubscriptionPage() {
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">¡Reserva Confirmada!</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {firstName 
+              ? `¡Perfecto ${firstName}! Reserva Confirmada`
+              : '¡Reserva Confirmada!'
+            }
+          </h2>
           <p className="text-gray-600 mb-6">Tu sesión ha sido confirmada y el pago procesado exitosamente.</p>
           
           <div className="bg-gray-50 rounded-lg p-4 mb-6 text-left">
@@ -529,6 +575,28 @@ export default function SubscriptionPage() {
           />
         </div>
       </header>
+
+      {/* Mensaje de verificación exitosa */}
+      {userName && userName.trim() !== '' && showWelcomeMessage && (
+        <div className="max-w-6xl mx-auto px-6 mb-8">
+          <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 text-center transition-all duration-500 ease-in-out">
+            <p className="text-green-300 font-medium">
+              ✅ ¡Hola {getFirstName()}! Tu correo ha sido verificado exitosamente. Bienvenido a tu experiencia personalizada.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Debug info */}
+      {process.env.NODE_ENV === 'development' && false && (
+        <div className="max-w-6xl mx-auto px-6 mb-4">
+          <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-2 text-xs">
+            <p className="text-blue-300">
+              Debug: userName="{userName}" | firstName="{firstName}" | isVerified={isVerifiedUser.toString()}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* INDICADOR DE PROGRESO */}
       <div className="max-w-4xl mx-auto px-6 mb-8">
