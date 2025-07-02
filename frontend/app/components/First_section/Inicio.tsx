@@ -6,17 +6,17 @@ export const Home = () => {
     <div id="Inicio" className="flex flex-col lg:flex-row min-h-screen w-full">
       
       {/* Sección izquierda - Contenido de texto */}
-      <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1">
+      <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 h-screen lg:h-auto">
         
-        {/* Título principal */}
-        <div className="bg-[#202648] flex-1 flex items-center justify-center px-6 sm:px-8 md:px-10 lg:px-12 py-8 sm:py-12 lg:py-16">
-          <h1 className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-tight text-center lg:text-left [text-shadow:0px_4px_4px_#00000040]">
+        {/* Título principal - MÁS PRESENCIA */}
+        <div className="bg-[#202648] flex-[1.5] flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-6">
+          <h1 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl leading-tight sm:leading-tight md:leading-tight text-center lg:text-left [text-shadow:0px_4px_4px_#00000040] max-w-full">
             Desbloquea tu mejor versión en solo una sesión.
           </h1>
         </div>
 
-        {/* Subtítulo */}
-        <div className="bg-[#0e122d] px-6 sm:px-8 md:px-10 lg:px-12 py-6 sm:py-8">
+        {/* Subtítulo - COMPACTO */}
+        <div className="bg-[#0e122d] flex-[0.8] flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-3 sm:py-4">
           <p className="text-[#8b7871] text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl leading-relaxed text-center lg:text-left">
             <span className="font-semibold">
               Claridad, dirección y una conversación honesta que te rete a ser quien sabes que{" "}
@@ -27,27 +27,26 @@ export const Home = () => {
           </p>
         </div>
 
-        {/* Sección CTA */}
-        <div className="bg-[#272f54] px-6 sm:px-8 md:px-10 lg:px-12 py-8 sm:py-10 lg:py-12 flex flex-col items-center lg:items-start gap-4 sm:gap-6">
-          
-          {/* Botón principal */}
-          <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 min-w-[200px] sm:min-w-[240px] hover:scale-105 shadow-lg">
-            Reserva tu sesión
-          </button>
-          
-          {/* Texto "Conoce más" con flecha */}
-          <div className="flex items-end gap-3 sm:gap-4 lg:gap-6 mt-2 sm:mt-4">
-            <div className="text-[#b27451] text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-normal transform rotate-[-0.08deg] [font-family:'Figma_Hand-Regular',Helvetica] tracking-[-1px] sm:tracking-[-2.16px] leading-tight sm:leading-[79.2px]">
-              Conoce más
-            </div>
-            <img
-              className="w-8 h-10 sm:w-10 sm:h-12 lg:w-12 lg:h-16 mb-1 sm:mb-2"
-              alt="Flecha curvada"
-              src="Flecha.png"
-            />
-          </div>
-        </div>
-      </div>
+{/* Sección CTA - CENTRADA HACIA LA IZQUIERDA */}
+<div className="bg-[#272f54] flex-[1] flex flex-col justify-center items-start px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-6">
+  
+  {/* Botón principal - CENTRADO EN EL ÁREA */}
+  <div className="w-full flex justify-start pl-0 sm:pl-4 md:pl-8 lg:pl-12 mb-6 sm:mb-8">
+    <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-3 sm:py-4 rounded-full transition-all duration-300 min-w-[200px] sm:min-w-[250px] md:min-w-[280px] hover:scale-105 shadow-xl hover:shadow-2xl">
+      Reserva tu sesión
+    </button>
+  </div>
+  
+  {/* Imagen "Conoce más" - ALINEADA CON EL BOTÓN */}
+  <div className="w-full flex justify-start pl-0 sm:pl-4 md:pl-8 lg:pl-12">
+    <img
+      className="h-14 sm:h-20 w-auto object-contain"
+      alt="Conoce más"
+      src="/main_section/conocemas.png"
+    />
+  </div>
+</div>
+    </div>
 
       {/* Sección derecha - Imagen con fondos */}
       <div className="relative w-full lg:w-1/2 h-[50vh] sm:h-[60vh] lg:h-auto overflow-hidden order-1 lg:order-2">
@@ -61,7 +60,7 @@ export const Home = () => {
         {/* Imagen principal superpuesta */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <img
-            className="w-full h-full object-cover object-center lg:object-center"
+            className="max-w-full max-h-full object-cover object-center"
             alt="Camisa blanca"
             src="/main_section/HAPP001.png"
           />

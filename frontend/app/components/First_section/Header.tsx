@@ -32,7 +32,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`${isScrolled ? 'fixed' : 'sticky'} top-0 left-0 w-full px-4 sm:px-6 lg:px-10 py-3 sm:py-4 z-50 transition-all duration-500 ease-in-out ${
+    <header className={`${isScrolled ? 'fixed' : 'sticky'} top-0 left-0 w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-3 z-50 transition-all duration-500 ease-in-out ${
       isScrolled 
         ? 'bg-[#2f3362]/90 backdrop-blur-md border-b border-white/10 shadow-lg' 
         : 'bg-[#2f3362] border-b border-transparent'
@@ -40,37 +40,37 @@ export default function Header() {
       <div className="flex items-center justify-between w-full max-w-none mx-auto">
         {/* Logo */}
         <div className="flex-1 lg:flex-none flex justify-center lg:justify-start">
-          <h1 className="text-[#c4a64b] font-bold tracking-widest text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-serif whitespace-nowrap transition-all duration-300 hover:text-[#d4b65b] cursor-pointer">
+          <h1 className="text-[#c4a64b] font-bold tracking-widest text-sm sm:text-base md:text-lg lg:text-xl font-serif whitespace-nowrap transition-all duration-300 hover:text-[#d4b65b] cursor-pointer">
             HAPPY HUMAN
           </h1>
         </div>
 
         {/* Menú Desktop */}
-        <nav className="hidden lg:flex gap-3 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-source-sans font-medium">
+        <nav className="hidden lg:flex gap-4 lg:gap-6 xl:gap-8 text-white text-sm lg:text-base font-source-sans font-medium">
           <a 
             href="#Inicio" 
-            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-1"
           >
             HOME
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
             href="#AcercaDe" 
-            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-1"
           >
             ACERCA DE
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
             href="#DanielCorral" 
-            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-1"
           >
             DANIEL CORRAL
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a 
             href="#Trabajo" 
-            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-2"
+            className="relative hover:text-[#c4a64b] transition-all duration-300 group py-1"
           >
             TRABAJO
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a64b] transition-all duration-300 group-hover:w-full"></span>
@@ -80,7 +80,7 @@ export default function Header() {
         {/* CTA Desktop */}
         <button 
           onClick={handleCtaClick}
-          className="hidden lg:block bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-2 sm:px-3 md:px-4 lg:px-4 xl:px-6 py-1.5 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
+          className="hidden lg:block bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-4 lg:px-5 py-2 text-sm lg:text-base rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
         >
           CAMBIA TU VIDA
         </button>
@@ -88,12 +88,12 @@ export default function Header() {
         {/* Botón Hamburguesa */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none group"
+          className="lg:hidden flex flex-col justify-center items-center w-7 h-7 space-y-1 focus:outline-none group"
           aria-label="Toggle menu"
         >
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
         </button>
       </div>
 
@@ -103,43 +103,43 @@ export default function Header() {
           ? 'opacity-100 translate-y-0 visible' 
           : 'opacity-0 -translate-y-4 invisible'
       }`}>
-        <div className="px-4 py-6 space-y-4">
-          <nav className="space-y-2 sm:space-y-4">
+        <div className="px-4 py-4 space-y-3">
+          <nav className="space-y-1">
             <a 
               href="#Inicio" 
               onClick={closeMenu}
-              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+              className="block text-white text-base font-source-sans font-medium py-2 px-3 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               HOME
             </a>
             <a 
               href="#AcercaDe" 
               onClick={closeMenu}
-              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+              className="block text-white text-base font-source-sans font-medium py-2 px-3 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               ACERCA DE
             </a>
             <a 
               href="#DanielCorral" 
               onClick={closeMenu}
-              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+              className="block text-white text-base font-source-sans font-medium py-2 px-3 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               DANIEL CORRAL
             </a>
             <a 
               href="#Trabajo" 
               onClick={closeMenu}
-              className="block text-white text-base sm:text-lg md:text-xl font-source-sans font-medium py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
+              className="block text-white text-base font-source-sans font-medium py-2 px-3 rounded-lg hover:bg-white/10 hover:text-[#c4a64b] transition-all duration-300"
             >
               TRABAJO
             </a>
           </nav>
 
           {/* CTA en menú móvil */}
-          <div className="pt-3 sm:pt-4 border-t border-white/10">
+          <div className="pt-2 border-t border-white/10">
             <button 
               onClick={handleCtaClick}
-              className="w-full bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg md:text-xl rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+              className="w-full bg-[#ffc438] hover:bg-[#e6ad33] text-[#4b2207] font-bold px-4 py-2.5 text-base rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
             >
               CAMBIA TU VIDA
             </button>
