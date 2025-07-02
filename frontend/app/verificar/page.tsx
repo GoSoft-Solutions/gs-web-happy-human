@@ -1,7 +1,7 @@
 // app/verificar/page.tsx
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 interface UserData {
@@ -10,7 +10,8 @@ interface UserData {
   email: string;
 }
 
-const VerificarPage: React.FC = () => {
+// ✅ COMPONENTE SEPARADO QUE USA useSearchParams
+const VerificarContent: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [estado, setEstado] = useState<'cargando' | 'exito' | 'error' | 'redirigiendo'>('cargando');
@@ -288,6 +289,27 @@ const VerificarPage: React.FC = () => {
         </p>
       </footer>
     </div>
+  );
+};
+
+// ✅ COMPONENTE PRINCIPAL CON SUSPENSE
+const VerificarPage: React.FC = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen w-full bg-[#363d69] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#c4a64b] mx-auto mb-6"></div>
+          <h1 className="text-white text-2xl font-bold mb-4">
+            Cargando verificación...
+          </h1>
+          <p className="text-white/80">
+            Preparando tu experiencia personalizada
+          </p>
+        </div>
+      </div>
+    }>
+      <VerificarContent />
+    </Suspense>
   );
 };
 
