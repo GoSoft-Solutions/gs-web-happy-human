@@ -26,7 +26,7 @@ export const HeroSection = () => {
                   <img
                     className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                     alt="Persona trabajando en laptop"
-                    src="/main_section/HAPP003.jpg"
+                    src="/main_section/HAPP003.JPG"
                   />
                 </div>
 
@@ -125,7 +125,7 @@ export const HeroSection = () => {
                   <img
                     className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                     alt="Persona leyendo documentos"
-                    src="/main_section/HAPP004.jpg"
+                    src="/main_section/HAPP004.JPG"
                   />
                 </div>
 

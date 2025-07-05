@@ -1,7 +1,7 @@
 // app/api/submit-form/route.js
 
-// REEMPLAZA esta URL con la URL de tu Google Apps Script
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpkRr8QPVtSqWQMPoqut5vooYoQOAKg-kxMlnaLXRhFTsF8EfQx7tunbfv6Je5tlVR/exec ';
+// REEMPLAZA esta URL con la URL de tu Google Apps Script actualizado
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwEEke2flXEn9X_SEDhAlnurgsTgn-d0J46JzNqMbjowy1RIdXCcCutZ_S5PRx6KmDE/exec';
 
 export async function POST(request) {
   try {
@@ -16,14 +16,23 @@ export async function POST(request) {
       );
     }
 
-    console.log('Enviando datos a Google Apps Script:', {
+    // Validación adicional de email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      return Response.json(
+        { error: 'Email inválido' },
+        { status: 400 }
+      );
+    }
+
+    console.log('Enviando datos para verificación a Google Apps Script:', {
       nombre,
       apellidos,
       email,
       celular
     });
 
-    // Enviar datos a Google Apps Script
+    // Enviar datos a Google Apps Script para crear verificación
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: {
@@ -49,7 +58,7 @@ export async function POST(request) {
     if (result.success) {
       return Response.json({ 
         success: true, 
-        message: 'Formulario enviado exitosamente',
+        message: 'Correo de verificación enviado exitosamente. Revisa tu bandeja de entrada.',
         email: result.email
       });
     } else {
