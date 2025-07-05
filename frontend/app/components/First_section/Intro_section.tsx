@@ -53,7 +53,7 @@ const IntroSection: React.FC = () => {
             </div>
 
             {/* 4. Imagen */}
-            <div className="bg-[#dc5a38] w-full h-[350px] sm:h-[400px] relative rounded-2xl overflow-hidden">
+            <div className="bg-[#dc5a38] w-full h-[450px] sm:h-[650px] relative rounded-2xl overflow-hidden">
               <Image
                 src="/main_section/HAPP002.png"
                 alt="Daniel"
@@ -69,10 +69,10 @@ const IntroSection: React.FC = () => {
 
           {/* Cuadros ocupan casi todo el espacio */}
           <div className="hidden md:block w-full h-full">
-            <div className="relative w-full h-full min-h-[70vh] lg:min-h-[75vh] xl:min-h-[80vh]">
+            <div className="relative w-full h-full min-h-[85vh] lg:min-h-[90vh] xl:min-h-[95vh]">
               
               {/* Grid 2x2 que ocupa casi todo el espacio disponible con altura responsiva */}
-              <div className="grid grid-cols-2 grid-rows-2 rounded-2xl overflow-hidden h-[70vh] lg:h-[75vh] xl:h-[80vh] w-full">
+              <div className="grid grid-cols-2 grid-rows-2 rounded-2xl overflow-hidden h-[85vh] lg:h-[90vh] xl:h-[95vh] w-full">
                 
                 {/* Superior Izquierdo - Amarillo */}
                 <div className="bg-[#e8b258] flex items-center justify-center p-6 lg:p-8 xl:p-12">
@@ -122,7 +122,7 @@ const IntroSection: React.FC = () => {
               </div>
 
               {/* Imagen que sale del cuadrante coral como en el diseño original */}
-              <div className="absolute bottom-[0%] right-[0%] w-[50%] h-[62%] z-20">
+              <div className="absolute bottom-[0%] right-[0%] w-[45%] h-[62%] z-20">
                 <Image
                   src="/main_section/HAPP002.png"
                   alt="Daniel"
@@ -130,7 +130,7 @@ const IntroSection: React.FC = () => {
                   priority
                   style={{
                     objectFit: 'cover',
-                    objectPosition: 'center 40%',
+                    objectPosition: 'center 26%',
                   }}
                   className="rounded-br-2xl"
                 />

@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
                 <img
                   className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 transition-transform duration-300"
                   alt="Facebook"
-                  src="/icons/Social-facebook-1.svg"
+                  src="/icons/facebook.png"
                 />
               </a>
 
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
                 <img
                   className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 transition-transform duration-300"
                   alt="Twitter"
-                  src="/icons/Social-twitter.svg"
+                  src="/icons/twiter.png"
                 />
               </a>
 
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
                 <img
                   className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 transition-transform duration-300"
                   alt="Instagram"
-                  src="/icons/Social-Instagram.svg"
+                  src="/icons/Instagram.png"
                 />
               </a>
 
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 <img
                   className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 transition-transform duration-300"
                   alt="WhatsApp"
-                  src="/icons/Social-Whatsapp.svg"
+                  src="/icons/whatsapp.png"
                 />
               </a>
             </div>
