@@ -1,11 +1,15 @@
+'use client';
 import React from "react";
-//import x61 from "./6-1.png";
-//import NOEsParaTi from "./NO-ES-PARA-TI.png";
-//import element from "./element.svg";
-//import ellipse1 from "./ellipse-1.svg";
-//import sEsParaTi from "./s-ES-PARA-TI.png";
+import { useRouter } from 'next/navigation';
 
 export const Endsection: React.FC = () => {
+  const router = useRouter();
+
+  const handleReservaClick = () => {
+    console.log('Navegando a /start');
+    router.push('/start');
+  };
+
   return (
     <div id="Trabajo" className="flex flex-col w-full mx-auto items-center relative bg-[#272F54] min-h-screen">
       {/* Hero Section */}
@@ -42,7 +46,10 @@ export const Endsection: React.FC = () => {
                 </div>
 
                 {/* Botón responsive mejorado */}
-                <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full transition-colors duration-300 w-full max-w-[280px] sm:max-w-[320px] md:max-w-none md:w-auto shadow-lg">
+                <button 
+                  onClick={handleReservaClick}
+                  className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full transition-colors duration-300 w-full max-w-[280px] sm:max-w-[320px] md:max-w-none md:w-auto shadow-lg"
+                >
                   Reserva tu sesión
                 </button>
               </div>
@@ -152,7 +159,10 @@ export const Endsection: React.FC = () => {
           </h2>
           
           {/* Botón responsive */}
-          <button className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors duration-300 min-w-[200px] sm:min-w-[240px] w-full max-w-[300px] sm:max-w-none sm:w-auto">
+          <button 
+            onClick={handleReservaClick}
+            className="bg-[#ffc13a] hover:bg-[#e6ad33] text-[#202648] font-bold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors duration-300 min-w-[200px] sm:min-w-[240px] w-full max-w-[300px] sm:max-w-none sm:w-auto"
+          >
             Reserva tu sesión
           </button>
         </div>

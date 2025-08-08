@@ -25,13 +25,44 @@ html {
 
 /* Configuración adicional para mejor experiencia de scroll */
 * {
-  scroll-margin-top: 80px; /* Ajusta según la altura de tu header fijo */
+  scroll-margin-top: 90px; /* Aumentamos para compensar sticky/fixed */
 }
 
 /* Para dispositivos móviles, ajustar el offset del scroll */
 @media (max-width: 768px) {
   * {
-    scroll-margin-top: 70px; /* Altura del header en móvil */
+    scroll-margin-top: 85px; /* Altura del header en móvil + margen */
+  }
+  
+  /* Mejoras específicas para navegación móvil con sticky */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Asegurar que los anchor links funcionen en sticky */
+  [id] {
+    scroll-margin-top: 85px;
+  }
+}
+
+/* Específico para iOS Safari y navegadores webkit en móvil */
+@supports (-webkit-touch-callout: none) {
+  /* Forzar scroll suave en iOS */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (max-width: 768px) {
+    * {
+      scroll-margin-top: 90px;
+    }
+    
+    /* Elementos con ID específicamente para iOS */
+    #Inicio, #AcercaDe, #DanielCorral, #Trabajo {
+      scroll-margin-top: 90px;
+      padding-top: 10px;
+    }
   }
 }
 
@@ -52,11 +83,17 @@ html {
   }
   
   .scroll-offset-header {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
   }
   
   .scroll-offset-header-mobile {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 85px;
+  }
+  
+  /* Nueva utilidad para forzar scroll en móvil */
+  .force-scroll-mobile {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
 
