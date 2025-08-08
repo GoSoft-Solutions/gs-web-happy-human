@@ -49,6 +49,11 @@ module.exports = {
       height: {
         '18': '4.5rem', // 72px  
       },
+      // Max width personalizado - AGREGADO
+      maxWidth: {
+        '7xl': '80rem', // 1280px
+        '8xl': '88rem', // 1408px
+      },
       // Border radius personalizado
       borderRadius: {
         'custom-tl': '198px 0px 323px 0px',

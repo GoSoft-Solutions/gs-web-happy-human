@@ -18,13 +18,13 @@ export const Home = () => {
       <div className="flex flex-col w-full lg:w-1/2 order-2 lg:order-1 h-screen lg:h-auto">
 
         {/* Título principal - MÁS PRESENCIA */}
-        <div className="bg-[#202648] flex-[1.5] flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-6">
+        <div className="bg-[#202648] flex-[0.6] lg:flex-[1.5] flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-6">
           <h1 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl leading-tight sm:leading-tight md:leading-tight text-center lg:text-left [text-shadow:0px_4px_4px_#00000040] max-w-full">
             Desbloquea tu mejor versión en solo una sesión.
           </h1>
         </div>
 
-        {/* Subtítulo - COMPACTO */}
+        {/* Subtítulo */}
         <div className="bg-[#0e122d] flex-[0.8] flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-3 sm:py-4">
           <p className="text-[#8b7871] text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl leading-relaxed text-center lg:text-left">
             <span className="font-semibold">
