@@ -63,77 +63,45 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
   return (
     <>
       {/* Sección Hero con mensaje de bienvenida ÉPICO */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="max-w-6xl mx-auto px-6 py-15">
+        {/* ✨ TÍTULO PERSONALIZADO ÉPICO - ARRIBA DE TODO */}
+        <h1 className="text-white text-4xl md:text-5xl font-bold leading-tight mb-24 text-center">
+          ¡Felicidades por llegar hasta aquí!
+        </h1>
+        
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Columna izquierda - Texto de bienvenida personalizado */}
           <div className="text-white space-y-6">
             
-            {/* ✨ TÍTULO PERSONALIZADO ÉPICO */}
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              {shouldPersonalize && firstName ? (
-                <>
-                  ¡Felicidades <span className="text-[#c4a64b] animate-pulse">{firstName}</span> por llegar hasta aquí!
-                </>
-              ) : (
-                '¡Felicidades por llegar hasta aquí!'
-              )}
-            </h1>
-            
             <div className="space-y-6 text-lg">
-              {/* ✨ SALUDO PERSONALIZADO CON EMOCIONES */}
-              <div className="bg-gradient-to-r from-[#c4a64b]/20 to-transparent p-4 rounded-lg border-l-4 border-[#c4a64b]">
-                <p className="font-semibold text-xl">
-                  {shouldPersonalize && firstName ? (
-                    <>
-                      Hola <span className="text-[#c4a64b]">{firstName}</span> 👋
-                    </>
-                  ) : (
-                    'Hola 👋'
-                  )}
-                </p>
-              </div>
+              {/* ✨ SALUDO PERSONALIZADO - ÚNICA VEZ QUE APARECE EL NOMBRE */}
+              <p className="font-semibold text-2xl text-[#c4a64b] mb-14">
+                Hola {shouldPersonalize && firstName ? firstName : '[Nombre]'}
+              </p>
               
-              {/* ✨ MENSAJE MOTIVACIONAL PERSONALIZADO */}
+              {/* ✨ NUEVO MENSAJE DE LA IMAGEN */}
               <div className="space-y-4">
                 <p className="text-lg leading-relaxed">
-                  {shouldPersonalize && firstName ? (
-                    <>
-                      Permíteme decirte, <span className="text-[#c4a64b] font-semibold">{firstName}</span>, que estamos a un paso de liberar tu mejor versión. En <span className="text-yellow-400 font-semibold">Happy Human</span> creemos que cada persona tiene un potencial enorme esperando ser liberado.
-                    </>
-                  ) : (
-                    <>
-                      Permíteme decirte que estamos a un paso de liberar tu mejor versión. En <span className="text-yellow-400 font-semibold">Happy Human</span> creemos que cada persona tiene un potencial enorme esperando ser liberado.
-                    </>
-                  )}
+                  Permíteme decirte que estamos a un paso de liberar tu mejor versión de ti, en <span className="text-[#c4a64b] font-semibold">Happy Human</span> creemos que cada persona tiene un potencial enorme esperando ser liberado.
                 </p>
                 
                 <p className="text-lg leading-relaxed">
-                  Juntos impulsaremos cambios reales en tu vida a través de pilares fundamentales como: <span className="text-yellow-400 font-semibold">la disciplina, la mentalidad, los hábitos y el propósito.</span>
+                  Y con ello, juntos impulsaremos cambios reales en tu vida a través de pilares fundamentales como: <span className="text-red-400 font-semibold">la disciplina, la mentalidad, los hábitos y el propósito</span>.
                 </p>
                 
-                {/* ✨ MENSAJE PERSONAL PROFUNDO */}
-                <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-white/20">
-                  <p className="text-lg leading-relaxed">
-                    {shouldPersonalize && firstName ? (
-                      <>
-                        Aquí no se trata solo de alcanzar tus metas, <span className="text-[#c4a64b] font-semibold">{firstName}</span>, sino de descubrir quién eres realmente y hacia dónde puedes llegar. Ya sea que quieras alcanzar nuevas metas, encontrar claridad o simplemente reconectar contigo, estaré encantado de acompañarte en este viaje de transformación.
-                      </>
-                    ) : (
-                      <>
-                        Aquí no se trata solo de alcanzar tus metas, sino de descubrir quién eres realmente y hacia dónde puedes llegar. Ya sea que quieras alcanzar nuevas metas, encontrar claridad o simplemente reconectar contigo, estaré encantado de acompañarte en este viaje.
-                      </>
-                    )}
-                  </p>
+                <p className="text-lg leading-relaxed italic">
+                  "Aquí no se trata solo de alcanzar tus metas, sino de descubrir quién eres realmente y hacia dónde puedes llegar."
+                </p>
+                
+                <p className="text-lg leading-relaxed">
+                  Ya sea que quieras alcanzar nuevas metas, encontrar claridad o simplemente reconectar contigo, estaré encantado de acompañarte en este viaje.
+                </p>
+                
+                {/* ✨ FIRMA */}
+                <div className="pt-6">
+                  <p className="text-blue-400 font-semibold text-lg">Daniel Corral</p>
+                  <p className="text-blue-300 text-sm">CEO & Director of Happy Human</p>
                 </div>
-
-                {/* ✨ MENSAJE DE COMPROMISO PERSONAL */}
-                {shouldPersonalize && firstName && (
-                  <div className="bg-gradient-to-r from-[#c4a64b]/20 to-transparent p-4 rounded-lg border border-[#c4a64b]/30">
-                    <p className="text-[#c4a64b] font-medium text-center italic">
-                      "Este es el momento perfecto para ti, {firstName}. Tu transformación comienza ahora." 🌟
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -159,28 +127,18 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
         </div>
       </section>
 
-      {/* Sección de selección de sesión PERSONALIZADA */}
+      {/* Sección de selección de sesión SIN personalización excesiva */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         
-        {/* ✨ TÍTULO DE SECCIÓN SÚPER PERSONALIZADO */}
+        {/* ✨ TÍTULO DE SECCIÓN SIN NOMBRE DEL USUARIO */}
         <div className="text-center mb-12">
           <h2 className="text-white text-4xl font-bold mb-4 font-serif">
-            {shouldPersonalize && firstName ? (
-              <>
-                <span className="text-[#c4a64b]">{firstName}</span>, elige tu sesión de transformación
-              </>
-            ) : (
-              'Elige tu Sesión de Transformación'
-            )}
+            Elige tu Sesión de Transformación
           </h2>
           
-          {/* Subtítulo personalizado */}
+          {/* Subtítulo sin personalización */}
           <p className="text-white/80 text-lg mb-6">
-            {shouldPersonalize && firstName ? (
-              `${firstName}, cada opción está diseñada para impulsar tu crecimiento personal`
-            ) : (
-              'Cada opción está diseñada para impulsar tu crecimiento personal'
-            )}
+            Cada opción está diseñada para impulsar tu crecimiento personal
           </p>
           
           <div className="flex justify-center">
@@ -200,10 +158,10 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
               }`}
               onClick={() => onSessionSelect(session.id)}
             >
-              {/* Indicador de selección personalizado */}
+              {/* Indicador de selección SIN personalización */}
               {selectedSession === session.id && (
                 <div className="absolute top-4 right-4 bg-[#c4a64b] text-white px-3 py-1 rounded-full text-sm font-bold">
-                  {shouldPersonalize && firstName ? `Para ${firstName}` : 'Seleccionado'}
+                  Seleccionado
                 </div>
               )}
               
@@ -229,7 +187,7 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
                 ))}
               </ul>
               
-              {/* Botón de selección personalizado */}
+              {/* Botón de selección SIN personalización */}
               <button 
                 className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 mt-auto transform hover:scale-105 ${
                   selectedSession === session.id
@@ -238,7 +196,7 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
                 }`}
               >
                 {selectedSession === session.id 
-                  ? (shouldPersonalize && firstName ? `✓ Perfecto para ${firstName}` : '✓ Seleccionado')
+                  ? '✓ Seleccionado'
                   : 'Seleccionar esta opción'
                 }
               </button>
@@ -246,41 +204,22 @@ const SessionComponent: React.FC<SessionComponentProps> = ({
           ))}
         </div>
 
-        {/* ✨ BOTÓN ÉPICO PARA CONTINUAR */}
+        {/* ✨ BOTÓN PARA CONTINUAR SIN personalización excesiva */}
         {selectedSession && (
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-[#c4a64b]/20 to-yellow-400/20 p-6 rounded-xl mb-6">
-              <p className="text-white text-lg mb-4">
-                {shouldPersonalize && firstName ? (
-                  <>
-                    ¡Excelente elección, <span className="text-[#c4a64b] font-bold">{firstName}</span>! 
-                    Estás a un paso de comenzar tu transformación.
-                  </>
-                ) : (
-                  '¡Excelente elección! Estás a un paso de comenzar tu transformación.'
-                )}
-              </p>
-            </div>
+          <div className="text-center mt-15">
+            
             
             <button 
               onClick={onProceedToBooking}
               className="bg-gradient-to-r from-[#c4a64b] to-yellow-500 hover:from-yellow-500 hover:to-[#c4a64b] text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
             >
-              {shouldPersonalize && firstName ? (
-                <>
-                  🚀 ¡Vamos {firstName}, reserva tu transformación!
-                </>
-              ) : (
-                '🚀 Continuar con la Reserva'
-              )}
+              Continuar con la Reserva
             </button>
             
-            {/* Mensaje motivacional final */}
-            {shouldPersonalize && firstName && (
-              <p className="text-white/80 text-sm mt-4 italic">
-                Tu mejor versión te está esperando, {firstName} ✨
-              </p>
-            )}
+            {/* Mensaje motivacional final SIN personalización */}
+            <p className="text-white/80 text-sm mt-4 italic">
+              Tu mejor versión te está esperando ✨
+            </p>
           </div>
         )}
       </section>
